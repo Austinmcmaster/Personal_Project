@@ -1,0 +1,17 @@
+D:\Personal_Project\backend\target\debug\deps\libaws_types-2c44947c74c2ef67.rmeta: C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\lib.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\app_name.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\build_metadata.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\config.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\mod.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\credentials_impl.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\provider.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\os_shim_internal.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\region.rs D:\Personal_Project\backend\target\debug\build\aws-types-432005417ba196bf\out/build_env.rs
+
+D:\Personal_Project\backend\target\debug\deps\aws_types-2c44947c74c2ef67.d: C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\lib.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\app_name.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\build_metadata.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\config.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\mod.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\credentials_impl.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\provider.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\os_shim_internal.rs C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\region.rs D:\Personal_Project\backend\target\debug\build\aws-types-432005417ba196bf\out/build_env.rs
+
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\lib.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\app_name.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\build_metadata.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\config.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\mod.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\credentials_impl.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\credentials\provider.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\os_shim_internal.rs:
+C:\Users\Austi\.cargo\registry\src\index.crates.io-6f17d22bba15001f\aws-types-0.8.0\src\region.rs:
+D:\Personal_Project\backend\target\debug\build\aws-types-432005417ba196bf\out/build_env.rs:
+
+# env-dep:CARGO_PKG_VERSION=0.8.0
+# env-dep:OUT_DIR=D:\\Personal_Project\\backend\\target\\debug\\build\\aws-types-432005417ba196bf\\out
