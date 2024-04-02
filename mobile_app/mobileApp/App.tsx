@@ -9,16 +9,21 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Map } from "./components/Map";
-const Stack = createStackNavigator();
+
+export type RootStackParams = {
+  Home: any;
+  Map: any;
+};
+const Appstack = createStackNavigator<RootStackParams>();
 export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
+        <Appstack.Navigator initialRouteName="Home">
+          <Appstack.Screen name="Home" component={HomeScreen} />
+          <Appstack.Screen name="Map" component={Map} />
+        </Appstack.Navigator>
         <Navbar />
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Map" component={Map} />
-        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );

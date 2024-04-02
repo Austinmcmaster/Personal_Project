@@ -8,21 +8,25 @@ import {
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { RootStackParams } from "../App";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
 const Navbar = () => {
-  const navigation = useNavigation();
-
-  const navigateToScreen = (screenName: string) => {};
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigateToScreen("Home")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Text style={styles.buttonText}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Map")}
+        >
           <Text style={styles.buttonText}>Map</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>

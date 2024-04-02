@@ -5,12 +5,15 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Button,
 } from "react-native";
+import Navbar from "./navbar";
 
 export const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
+      <Button title="test" />
     </View>
   );
 };
