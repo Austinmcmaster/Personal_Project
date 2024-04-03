@@ -1,20 +1,14 @@
-import MapView, { Region } from "react-native-maps";
+import MapView, { Region, Animated } from "react-native-maps";
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import { LatLng } from "react-native-maps";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 
 export const Map = () => {
   const [location, setLocation] = useState<Location.LocationObject>();
   const [message, setMessage] = useState("");
   const [region, setregion] = useState<Region>();
+  const [mapReady, setMapReady] = useState(false);
+
   useEffect(() => {
     const getPermissions = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -23,33 +17,20 @@ export const Map = () => {
         return;
       }
 
-      let currentLocation = await Location.getCurrentPositionAsync({});
+      let currentLocation = await Location.getCurrentPositionAsync();
+      console.log(currentLocation);
       setLocation(currentLocation);
-      calDelta(
-        location!.coords.latitude,
-        location!.coords.longitude,
-        location!.coords.accuracy!
-      );
+      const region: Region = {
+        latitude: currentLocation.coords.latitude,
+        longitude: currentLocation.coords.longitude,
+        latitudeDelta: 0.0173,
+        longitudeDelta: 0.013,
+      };
+      setregion(region);
+      setMapReady(true);
     };
     getPermissions();
   }, []);
-
-  const calDelta = (lat: number, long: number, accuracy: number) => {
-    const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
-    const latDelta = accuracy / oneDegreeOfLatitudeInMeters;
-    const longDelta =
-      accuracy /
-      (oneDegreeOfLatitudeInMeters * Math.cos(lat * (Math.PI / 180)));
-
-    const myRegion: Region = {
-      latitude: lat,
-      longitude: long,
-      latitudeDelta: latDelta,
-      longitudeDelta: longDelta,
-    };
-
-    setregion(myRegion);
-  };
 
   const updateRegion = (region: Region) => {
     setregion(region);
@@ -65,13 +46,24 @@ export const Map = () => {
     },
   });
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={region}
-        onRegionChange={updateRegion}
-      />
-    </SafeAreaView>
-  );
+  if (mapReady) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Animated
+          style={styles.map}
+          followsUserLocation={true}
+          region={region}
+          onRegionChange={updateRegion}
+          showsUserLocation={true}
+          zoomEnabled={true}
+        />
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <View>
+        <Text>Loading Map....</Text>
+      </View>
+    );
+  }
 };
