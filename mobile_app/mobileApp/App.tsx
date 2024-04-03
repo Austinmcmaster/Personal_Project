@@ -9,19 +9,25 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Map } from "./components/Map";
+import Gas from "./components/Gas";
 
 export type RootStackParams = {
   Home: any;
   Map: any;
+  Gas: any;
 };
 const Appstack = createStackNavigator<RootStackParams>();
 export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Appstack.Navigator initialRouteName="Home">
+        <Appstack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerStyle: { backgroundColor: "#FF5733" } }}
+        >
           <Appstack.Screen name="Home" component={HomeScreen} />
           <Appstack.Screen name="Map" component={Map} />
+          <Appstack.Screen name="Gas" component={Gas} />
         </Appstack.Navigator>
         <Navbar />
       </NavigationContainer>

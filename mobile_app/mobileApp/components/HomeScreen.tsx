@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-  Button,
-} from "react-native";
-import Navbar from "./navbar";
+import { View, Text, StyleSheet, Button } from "react-native";
 
 export const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Button title="test" />
+      <Text>Welcome to GasApp</Text>
     </View>
   );
 };

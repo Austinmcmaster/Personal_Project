@@ -29,7 +29,10 @@ const Navbar = () => {
         >
           <Text style={styles.buttonText}>Map</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Gas")}
+        >
           <Text style={styles.buttonText}>Gas</Text>
         </TouchableOpacity>
       </View>
