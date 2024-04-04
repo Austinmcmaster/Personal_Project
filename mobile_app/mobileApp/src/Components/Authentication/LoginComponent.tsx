@@ -10,8 +10,9 @@ import {
 import { AuthStackType } from "../../Stack/AuthStack";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
+import { AuthProp } from "../../../App";
 
-export const LoginComponent = () => {
+export const LoginComponent = (props: AuthProp) => {
   const [Username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
@@ -19,11 +20,11 @@ export const LoginComponent = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AuthStackType>>();
 
   const handleLogin = () => {
-    // Validate the input fields
     if (!password || !Username) {
       alert("Please fill in all fields");
       return;
     }
+    props.changeStack();
   };
 
   return (

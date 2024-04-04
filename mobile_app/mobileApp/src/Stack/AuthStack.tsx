@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { LoginComponent } from "../Components/Authentication/LoginComponent";
 import { RegisterComponent } from "../Components/Authentication/RegisterComponent";
+import { AuthProp } from "../../App";
 
 export type AuthStackType = {
   Login: any;
@@ -9,10 +10,12 @@ export type AuthStackType = {
 };
 const AuthenticationStack = createStackNavigator<AuthStackType>();
 
-export const AuthStack = () => {
+export const AuthStack = (parent: AuthProp) => {
   return (
     <AuthenticationStack.Navigator>
-      <AuthenticationStack.Screen name="Login" component={LoginComponent} />
+      <AuthenticationStack.Screen name="Login">
+        {(props) => <LoginComponent changeStack={parent.changeStack} />}
+      </AuthenticationStack.Screen>
       <AuthenticationStack.Screen
         name="Register"
         component={RegisterComponent}
