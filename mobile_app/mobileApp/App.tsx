@@ -5,7 +5,7 @@ import { BaseStack } from "./src/Stack/BastStack";
 import { AuthStack } from "./src/Stack/AuthStack";
 
 export default function App() {
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
   return (
     <SafeAreaProvider>
       <NavigationContainer>
