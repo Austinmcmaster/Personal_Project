@@ -2,35 +2,29 @@ import MapView, { Region, Animated } from "react-native-maps";
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { LocationPresenter } from "../src/Presenter/AppInitilization/LocationPresenter";
 
 export const Map = () => {
   const [location, setLocation] = useState<Location.LocationObject>();
-  const [message, setMessage] = useState("");
   const [region, setregion] = useState<Region>();
   const [mapReady, setMapReady] = useState(false);
 
   useEffect(() => {
-    const getPermissions = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setMessage("Permission to access location was denied");
-        return;
-      }
+    readyMap();
+  }, [location]);
 
-      let currentLocation = await Location.getCurrentPositionAsync();
-      console.log(currentLocation);
-      setLocation(currentLocation);
-      const region: Region = {
-        latitude: currentLocation.coords.latitude,
-        longitude: currentLocation.coords.longitude,
-        latitudeDelta: 0.0173,
-        longitudeDelta: 0.013,
-      };
-      setregion(region);
-      setMapReady(true);
+  const readyMap = async () => {
+    let currentLocation = await LocationPresenter.instance.getLocation();
+    setLocation(currentLocation);
+    const region: Region = {
+      latitude: currentLocation.coords.latitude,
+      longitude: currentLocation.coords.longitude,
+      latitudeDelta: 0.0173,
+      longitudeDelta: 0.013,
     };
-    getPermissions();
-  }, []);
+    setregion(region);
+    setMapReady(true);
+  };
 
   const updateRegion = (region: Region) => {
     setregion(region);
