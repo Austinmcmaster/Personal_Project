@@ -2,13 +2,8 @@ import * as Location from "expo-location";
 export class LocationPresenter {
   private response: Location.LocationPermissionResponse | undefined;
   private location: Location.LocationObject | undefined;
-  private static _instance: LocationPresenter;
 
-  private constructor() {}
-
-  public static get instance(): LocationPresenter {
-    return this._instance || (this._instance = new this());
-  }
+  public constructor() {}
 
   public async loadLocation(): Promise<void> {
     try {

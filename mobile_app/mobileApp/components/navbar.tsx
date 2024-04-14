@@ -8,12 +8,11 @@ import {
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParams } from "../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
+import { BaseStackType } from "../src/Stack/BaseStack";
 
 const Navbar = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigation = useNavigation<NativeStackNavigationProp<BaseStackType>>();
   return (
     <SafeAreaView>
       <View style={styles.container}>

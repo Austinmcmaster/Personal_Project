@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, Text, ScrollView } from "react-native";
-import * as Location from "expo-location";
 import { PlaceComponent, PlaceProps } from "./PlaceComponent";
-import { LocationPresenter } from "../Presenter/LocationPresenter";
+import { useContextInfo } from "../src/Context/contextHook";
+import { LocationPresenter } from "../src/Presenter/AppInitilization/LocationPresenter";
 
 const Gas = () => {
   const [gasStations, setGasStations] = useState<PlaceProps[]>();
-  const [location, setLocation] = useState<Location.LocationObject>();
   const [fetchStatus, setFetchStatus] = useState(false);
+  const { location, updateLocationInfo } = useContextInfo();
 
   const presenter: LocationPresenter = new LocationPresenter();
   useEffect(() => {
     (async () => {
+      await presenter.loadLocation();
       const local = await presenter.getLocation();
-      setLocation(local);
+      updateLocationInfo(local);
     })();
   }, []);
 

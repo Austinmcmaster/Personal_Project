@@ -4,6 +4,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { BaseStack } from "./src/Stack/BaseStack";
 import { AuthStack } from "./src/Stack/AuthStack";
 import { LocationPresenter } from "./src/Presenter/AppInitilization/LocationPresenter";
+import UserInfoContext from "./src/Context/UserInfoContext";
+import { useContextInfo } from "./src/Context/contextHook";
 
 export interface AuthProp {
   changeStack: () => void;
@@ -11,10 +13,14 @@ export interface AuthProp {
 
 export default function App() {
   const [auth, setAuth] = useState(false);
+  const { updateLocationInfo } = useContextInfo();
 
   useEffect(() => {
     const fetchLocation = async () => {
-      await LocationPresenter.instance.loadLocation();
+      const presenter = new LocationPresenter();
+      await presenter.loadLocation();
+      const location = await presenter.getLocation();
+      updateLocationInfo(location);
     };
     fetchLocation();
   });
@@ -24,10 +30,12 @@ export default function App() {
   };
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        {auth ? <BaseStack /> : <AuthStack changeStack={updateAuth} />}
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <UserInfoContext>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          {auth ? <BaseStack /> : <AuthStack changeStack={updateAuth} />}
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </UserInfoContext>
   );
 }

@@ -1,21 +1,24 @@
 import MapView, { Region, Animated } from "react-native-maps";
-import { useEffect, useState } from "react";
-import * as Location from "expo-location";
+import { useContext, useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 import { LocationPresenter } from "../src/Presenter/AppInitilization/LocationPresenter";
+import { useContextInfo } from "../src/Context/contextHook";
 
 export const Map = () => {
-  const [location, setLocation] = useState<Location.LocationObject>();
   const [region, setregion] = useState<Region>();
   const [mapReady, setMapReady] = useState(false);
+  const { location, updateLocationInfo } = useContextInfo();
 
   useEffect(() => {
     readyMap();
   }, [location]);
 
   const readyMap = async () => {
-    let currentLocation = await LocationPresenter.instance.getLocation();
-    setLocation(currentLocation);
+    let currentLocation = location;
+    if (currentLocation == undefined) {
+      currentLocation = await new LocationPresenter().getLocation();
+    }
+    updateLocationInfo(currentLocation);
     const region: Region = {
       latitude: currentLocation.coords.latitude,
       longitude: currentLocation.coords.longitude,
@@ -45,7 +48,7 @@ export const Map = () => {
       <SafeAreaView style={styles.container}>
         <Animated
           style={styles.map}
-          followsUserLocation={true}
+          //followsUserLocation={true}
           region={region}
           onRegionChange={updateRegion}
           showsUserLocation={true}
